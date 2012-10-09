@@ -1,0 +1,7 @@
+parameters:
+#    digin_home.example.class: Digin\HomeBundle\Example
+
+services:
+#    digin_home.example:
+#        class: %digin_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
