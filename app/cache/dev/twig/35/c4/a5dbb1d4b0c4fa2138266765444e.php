@@ -85,8 +85,8 @@ class __TwigTemplate_35c4a5dbb1d4b0c4fa2138266765444e extends Twig_Template
     public function block_stylesheets($context, array $blocks = array())
     {
         // line 14
-        echo "\t\t\t<link rel=\"stylesheet\" href=\"css/normalize.min.css\">
-\t\t\t<link rel=\"stylesheet\" href=\"css/main.css\">
+        echo "\t\t\t<link rel=\"stylesheet\" href=\"/css/normalize.min.css\">
+\t\t\t<link rel=\"stylesheet\" href=\"/css/main.css\">
 \t\t\t<link rel=\"stylesheet/less\" href=\"/less/style.less\">
 \t\t";
     }
