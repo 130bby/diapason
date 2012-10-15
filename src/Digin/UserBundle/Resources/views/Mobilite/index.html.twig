@@ -1,0 +1,61 @@
+<h1>Mobilite list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Permis</th>
+            <th>Details_permis</th>
+            <th>Pb_permis</th>
+            <th>Vehicule</th>
+            <th>Deux_roues</th>
+            <th>Voyage</th>
+            <th>Destination_voyage</th>
+            <th>Duree_voyage</th>
+            <th>Metropole</th>
+            <th>But_voyage_metropole</th>
+            <th>Duree_voyage_metropole</th>
+            <th>Desir_mobilite</th>
+            <th>Motivation_mobilite</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('mobilite_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.permis }}</td>
+            <td>{{ entity.detailspermis }}</td>
+            <td>{{ entity.pbpermis }}</td>
+            <td>{{ entity.vehicule }}</td>
+            <td>{{ entity.deuxroues }}</td>
+            <td>{{ entity.voyage }}</td>
+            <td>{{ entity.destinationvoyage }}</td>
+            <td>{{ entity.dureevoyage }}</td>
+            <td>{{ entity.metropole }}</td>
+            <td>{{ entity.butvoyagemetropole }}</td>
+            <td>{{ entity.dureevoyagemetropole }}</td>
+            <td>{{ entity.desirmobilite }}</td>
+            <td>{{ entity.motivationmobilite }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('mobilite_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('mobilite_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('mobilite_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

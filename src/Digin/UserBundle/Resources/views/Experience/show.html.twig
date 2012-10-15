@@ -1,0 +1,73 @@
+<h1>Experience</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Annees_entreprise</th>
+            <td>{{ entity.anneesentreprise }}</td>
+        </tr>
+        <tr>
+            <th>Annees_stage</th>
+            <td>{{ entity.anneesstage }}</td>
+        </tr>
+        <tr>
+            <th>Secteur</th>
+            <td>{{ entity.secteur }}</td>
+        </tr>
+        <tr>
+            <th>Specialisation</th>
+            <td>{{ entity.specialisation }}</td>
+        </tr>
+        <tr>
+            <th>Specialisation_details</th>
+            <td>{{ entity.specialisationdetails }}</td>
+        </tr>
+        <tr>
+            <th>Taille_entreprise</th>
+            <td>{{ entity.tailleentreprise }}</td>
+        </tr>
+        <tr>
+            <th>Competences</th>
+            <td>{{ entity.competences }}</td>
+        </tr>
+        <tr>
+            <th>Difficultes</th>
+            <td>{{ entity.difficultes }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th>Souhaits</th>
+            <td>{{ entity.souhaits }}</td>
+        </tr>
+        <tr>
+            <th>Description2</th>
+            <td>{{ entity.description2 }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('experience') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('experience_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('experience_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

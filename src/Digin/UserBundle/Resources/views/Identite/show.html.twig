@@ -1,0 +1,77 @@
+<h1>Identite</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ entity.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ entity.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>{{ entity.sexe }}</td>
+        </tr>
+        <tr>
+            <th>Date_naissance</th>
+            <td>{{ entity.datenaissance|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Nationalite</th>
+            <td>{{ entity.nationalite }}</td>
+        </tr>
+        <tr>
+            <th>Adresse1</th>
+            <td>{{ entity.adresse1 }}</td>
+        </tr>
+        <tr>
+            <th>Adresse2</th>
+            <td>{{ entity.adresse2 }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ entity.ville }}</td>
+        </tr>
+        <tr>
+            <th>Code_postal</th>
+            <td>{{ entity.codepostal }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>Tel</th>
+            <td>{{ entity.tel }}</td>
+        </tr>
+        <tr>
+            <th>Portable</th>
+            <td>{{ entity.portable }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('identite') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('identite_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('identite_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

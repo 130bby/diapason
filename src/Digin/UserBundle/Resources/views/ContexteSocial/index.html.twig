@@ -1,0 +1,65 @@
+<h1>ContexteSocial list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Statut_matrimonial</th>
+            <th>Enfant</th>
+            <th>Nombre_enfant</th>
+            <th>Age_enfant</th>
+            <th>Hebergement</th>
+            <th>Statut_professionnel</th>
+            <th>Date_debut_professionnel</th>
+            <th>Pb_sante</th>
+            <th>Etat_physique</th>
+            <th>Etat_psychologique</th>
+            <th>Suivi_psy</th>
+            <th>Etat_financier</th>
+            <th>Endettement</th>
+            <th>Avancement_demarche</th>
+            <th>Commentaire</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('contextesocial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.statutmatrimonial }}</td>
+            <td>{{ entity.enfant }}</td>
+            <td>{{ entity.nombreenfant }}</td>
+            <td>{{ entity.ageenfant }}</td>
+            <td>{{ entity.hebergement }}</td>
+            <td>{{ entity.statutprofessionnel }}</td>
+            <td>{% if entity.datedebutprofessionnel %}{{ entity.datedebutprofessionnel|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.pbsante }}</td>
+            <td>{{ entity.etatphysique }}</td>
+            <td>{{ entity.etatpsychologique }}</td>
+            <td>{{ entity.suivipsy }}</td>
+            <td>{{ entity.etatfinancier }}</td>
+            <td>{{ entity.endettement }}</td>
+            <td>{{ entity.avancementdemarche }}</td>
+            <td>{{ entity.commentaire }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('contextesocial_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('contextesocial_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('contextesocial_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

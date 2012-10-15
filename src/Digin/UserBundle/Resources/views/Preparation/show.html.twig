@@ -1,0 +1,73 @@
+<h1>Preparation</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Cv</th>
+            <td>{{ entity.cv }}</td>
+        </tr>
+        <tr>
+            <th>Lettre_motivation</th>
+            <td>{{ entity.lettremotivation }}</td>
+        </tr>
+        <tr>
+            <th>Aisance_entretien</th>
+            <td>{{ entity.aisanceentretien }}</td>
+        </tr>
+        <tr>
+            <th>Frequence_consultation</th>
+            <td>{{ entity.frequenceconsultation }}</td>
+        </tr>
+        <tr>
+            <th>Frequence_candidature</th>
+            <td>{{ entity.frequencecandidature }}</td>
+        </tr>
+        <tr>
+            <th>Contacts_pro</th>
+            <td>{{ entity.contactspro }}</td>
+        </tr>
+        <tr>
+            <th>Pole_emploi</th>
+            <td>{{ entity.poleemploi }}</td>
+        </tr>
+        <tr>
+            <th>Frequence_pole_emploi</th>
+            <td>{{ entity.frequencepoleemploi }}</td>
+        </tr>
+        <tr>
+            <th>Entretien</th>
+            <td>{{ entity.entretien }}</td>
+        </tr>
+        <tr>
+            <th>Frequence_entretien</th>
+            <td>{{ entity.frequenceentretien }}</td>
+        </tr>
+        <tr>
+            <th>Besoin_aide</th>
+            <td>{{ entity.besoinaide }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('preparation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('preparation_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('preparation_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

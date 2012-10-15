@@ -1,0 +1,49 @@
+<h1>Formation</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Desir_formation</th>
+            <td>{{ entity.desirformation }}</td>
+        </tr>
+        <tr>
+            <th>Intitule_formation</th>
+            <td>{{ entity.intituleformation }}</td>
+        </tr>
+        <tr>
+            <th>Desir_reorientation</th>
+            <td>{{ entity.desirreorientation }}</td>
+        </tr>
+        <tr>
+            <th>Secteur_reorientation</th>
+            <td>{{ entity.secteurreorientation }}</td>
+        </tr>
+        <tr>
+            <th>Commentaire</th>
+            <td>{{ entity.commentaire }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('formation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('formation_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('formation_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

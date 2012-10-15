@@ -1,0 +1,57 @@
+<h1>Preparation list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cv</th>
+            <th>Lettre_motivation</th>
+            <th>Aisance_entretien</th>
+            <th>Frequence_consultation</th>
+            <th>Frequence_candidature</th>
+            <th>Contacts_pro</th>
+            <th>Pole_emploi</th>
+            <th>Frequence_pole_emploi</th>
+            <th>Entretien</th>
+            <th>Frequence_entretien</th>
+            <th>Besoin_aide</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('preparation_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.cv }}</td>
+            <td>{{ entity.lettremotivation }}</td>
+            <td>{{ entity.aisanceentretien }}</td>
+            <td>{{ entity.frequenceconsultation }}</td>
+            <td>{{ entity.frequencecandidature }}</td>
+            <td>{{ entity.contactspro }}</td>
+            <td>{{ entity.poleemploi }}</td>
+            <td>{{ entity.frequencepoleemploi }}</td>
+            <td>{{ entity.entretien }}</td>
+            <td>{{ entity.frequenceentretien }}</td>
+            <td>{{ entity.besoinaide }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('preparation_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('preparation_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('preparation_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,89 @@
+<h1>ContexteSocial</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Statut_matrimonial</th>
+            <td>{{ entity.statutmatrimonial }}</td>
+        </tr>
+        <tr>
+            <th>Enfant</th>
+            <td>{{ entity.enfant }}</td>
+        </tr>
+        <tr>
+            <th>Nombre_enfant</th>
+            <td>{{ entity.nombreenfant }}</td>
+        </tr>
+        <tr>
+            <th>Age_enfant</th>
+            <td>{{ entity.ageenfant }}</td>
+        </tr>
+        <tr>
+            <th>Hebergement</th>
+            <td>{{ entity.hebergement }}</td>
+        </tr>
+        <tr>
+            <th>Statut_professionnel</th>
+            <td>{{ entity.statutprofessionnel }}</td>
+        </tr>
+        <tr>
+            <th>Date_debut_professionnel</th>
+            <td>{{ entity.datedebutprofessionnel|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Pb_sante</th>
+            <td>{{ entity.pbsante }}</td>
+        </tr>
+        <tr>
+            <th>Etat_physique</th>
+            <td>{{ entity.etatphysique }}</td>
+        </tr>
+        <tr>
+            <th>Etat_psychologique</th>
+            <td>{{ entity.etatpsychologique }}</td>
+        </tr>
+        <tr>
+            <th>Suivi_psy</th>
+            <td>{{ entity.suivipsy }}</td>
+        </tr>
+        <tr>
+            <th>Etat_financier</th>
+            <td>{{ entity.etatfinancier }}</td>
+        </tr>
+        <tr>
+            <th>Endettement</th>
+            <td>{{ entity.endettement }}</td>
+        </tr>
+        <tr>
+            <th>Avancement_demarche</th>
+            <td>{{ entity.avancementdemarche }}</td>
+        </tr>
+        <tr>
+            <th>Commentaire</th>
+            <td>{{ entity.commentaire }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('contextesocial') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('contextesocial_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('contextesocial_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

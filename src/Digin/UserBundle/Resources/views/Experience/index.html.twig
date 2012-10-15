@@ -1,0 +1,57 @@
+<h1>Experience list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Annees_entreprise</th>
+            <th>Annees_stage</th>
+            <th>Secteur</th>
+            <th>Specialisation</th>
+            <th>Specialisation_details</th>
+            <th>Taille_entreprise</th>
+            <th>Competences</th>
+            <th>Difficultes</th>
+            <th>Description</th>
+            <th>Souhaits</th>
+            <th>Description2</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('experience_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.anneesentreprise }}</td>
+            <td>{{ entity.anneesstage }}</td>
+            <td>{{ entity.secteur }}</td>
+            <td>{{ entity.specialisation }}</td>
+            <td>{{ entity.specialisationdetails }}</td>
+            <td>{{ entity.tailleentreprise }}</td>
+            <td>{{ entity.competences }}</td>
+            <td>{{ entity.difficultes }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.souhaits }}</td>
+            <td>{{ entity.description2 }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('experience_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('experience_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('experience_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,81 @@
+<h1>Mobilite</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Permis</th>
+            <td>{{ entity.permis }}</td>
+        </tr>
+        <tr>
+            <th>Details_permis</th>
+            <td>{{ entity.detailspermis }}</td>
+        </tr>
+        <tr>
+            <th>Pb_permis</th>
+            <td>{{ entity.pbpermis }}</td>
+        </tr>
+        <tr>
+            <th>Vehicule</th>
+            <td>{{ entity.vehicule }}</td>
+        </tr>
+        <tr>
+            <th>Deux_roues</th>
+            <td>{{ entity.deuxroues }}</td>
+        </tr>
+        <tr>
+            <th>Voyage</th>
+            <td>{{ entity.voyage }}</td>
+        </tr>
+        <tr>
+            <th>Destination_voyage</th>
+            <td>{{ entity.destinationvoyage }}</td>
+        </tr>
+        <tr>
+            <th>Duree_voyage</th>
+            <td>{{ entity.dureevoyage }}</td>
+        </tr>
+        <tr>
+            <th>Metropole</th>
+            <td>{{ entity.metropole }}</td>
+        </tr>
+        <tr>
+            <th>But_voyage_metropole</th>
+            <td>{{ entity.butvoyagemetropole }}</td>
+        </tr>
+        <tr>
+            <th>Duree_voyage_metropole</th>
+            <td>{{ entity.dureevoyagemetropole }}</td>
+        </tr>
+        <tr>
+            <th>Desir_mobilite</th>
+            <td>{{ entity.desirmobilite }}</td>
+        </tr>
+        <tr>
+            <th>Motivation_mobilite</th>
+            <td>{{ entity.motivationmobilite }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('mobilite') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('mobilite_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('mobilite_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
