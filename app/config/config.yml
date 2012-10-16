@@ -62,3 +62,15 @@ fos_user:
     firewall_name: main
     # Permet de renseigner la nouvelle entity utilisateur
     user_class: Digin\UserBundle\Entity\User
+    registration:
+        confirmation:
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address:        confirm@diapason.com
+                sender_name:    DIAPASON
+            enabled:    true # change to true for required email confirmation
+            template:   FOSUserBundle:Registration:email.txt.twig
+        form:
+            type:               fos_user_registration
+            handler:            fos_user.registration.form.handler.default
+            name:               fos_user_registration_form
+            validation_groups:  [Registration]
