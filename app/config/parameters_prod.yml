@@ -2,9 +2,9 @@ parameters:
     database_driver: pdo_mysql
     database_host: localhost
     database_port: null
-    database_name: diapason
-    database_user: root
-    database_password: null
+    database_name: diapason_prod
+    database_user: diapason_root
+    database_password: 123dev
     mailer_transport: smtp
     mailer_host: mail.3ad.digin.fr
     mailer_user: contact@3ad.digin.fr

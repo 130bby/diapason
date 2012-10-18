@@ -2,6 +2,8 @@ parameters:
 #    digin_user.example.class: Digin\UserBundle\Example
 
 services:
-#    digin_user.example:
-#        class: %digin_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  digin_userbundle_usertype.form.type:
+    class: Digin\UserBundle\Form\UserType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+        - { name: form.type, alias: digin_user_registration}

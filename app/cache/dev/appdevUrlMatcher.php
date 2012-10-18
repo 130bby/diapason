@@ -153,70 +153,62 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/user')) {
-            // digin_user_homepage
-            if (0 === strpos($pathinfo, '/user/hello') && preg_match('#^/user/hello/(?<name>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'digin_user_homepage'));
+        // identite
+        if (rtrim($pathinfo, '/') === '/user/identite') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'identite');
             }
 
-            // identite
-            if (rtrim($pathinfo, '/') === '/user/identite') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'identite');
-                }
-
-                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::indexAction',  '_route' => 'identite',);
-            }
-
-            // identite_show
-            if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::showAction',)), array('_route' => 'identite_show'));
-            }
-
-            // identite_new
-            if ($pathinfo === '/user/identite/new') {
-                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::newAction',  '_route' => 'identite_new',);
-            }
-
-            // identite_create
-            if ($pathinfo === '/user/identite/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_identite_create;
-                }
-
-                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::createAction',  '_route' => 'identite_create',);
-            }
-            not_identite_create:
-
-            // identite_edit
-            if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::editAction',)), array('_route' => 'identite_edit'));
-            }
-
-            // identite_update
-            if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_identite_update;
-                }
-
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::updateAction',)), array('_route' => 'identite_update'));
-            }
-            not_identite_update:
-
-            // identite_delete
-            if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_identite_delete;
-                }
-
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::deleteAction',)), array('_route' => 'identite_delete'));
-            }
-            not_identite_delete:
-
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::indexAction',  '_route' => 'identite',);
         }
+
+        // identite_show
+        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::showAction',)), array('_route' => 'identite_show'));
+        }
+
+        // identite_new
+        if ($pathinfo === '/user/identite/new') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::newAction',  '_route' => 'identite_new',);
+        }
+
+        // identite_create
+        if ($pathinfo === '/user/identite/create') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_identite_create;
+            }
+
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::createAction',  '_route' => 'identite_create',);
+        }
+        not_identite_create:
+
+        // identite_edit
+        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::editAction',)), array('_route' => 'identite_edit'));
+        }
+
+        // identite_update
+        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_identite_update;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::updateAction',)), array('_route' => 'identite_update'));
+        }
+        not_identite_update:
+
+        // identite_delete
+        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_identite_delete;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::deleteAction',)), array('_route' => 'identite_delete'));
+        }
+        not_identite_delete:
 
         // digin_home_homepage
         if (rtrim($pathinfo, '/') === '') {

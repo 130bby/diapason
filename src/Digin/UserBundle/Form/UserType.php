@@ -12,22 +12,8 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('usernameCanonical')
-            ->add('email')
-            ->add('emailCanonical')
-            ->add('enabled')
-            ->add('salt')
-            ->add('password')
-            ->add('lastLogin')
-            ->add('locked')
-            ->add('expired')
-            ->add('expiresAt')
-            ->add('confirmationToken')
-            ->add('passwordRequestedAt')
-            ->add('roles')
-            ->add('credentialsExpired')
-            ->add('credentialsExpireAt')
-        ;
+                ->add('email', 'email')
+                ->add('plainPassword', 'repeated', array('type' => 'password'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -39,6 +25,6 @@ class UserType extends AbstractType
 
     public function getName()
     {
-        return 'digin_userbundle_usertype';
+        return 'digin_user_registration';
     }
 }

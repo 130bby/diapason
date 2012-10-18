@@ -16,20 +16,13 @@ class __TwigTemplate_90d87bb5b61bcce8f88a3cc12d9d1388 extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "Hello ";
-        echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
-        echo "!
+        echo "Hello Bobby!
 ";
     }
 
     public function getTemplateName()
     {
         return "DiginUserBundle:Default:index.html.twig";
-    }
-
-    public function isTraitable()
-    {
-        return false;
     }
 
     public function getDebugInfo()
