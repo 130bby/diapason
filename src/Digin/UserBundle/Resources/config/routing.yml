@@ -1,3 +1,6 @@
+digin_user_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: DiginUserBundle:Default:index }
 identite:
   resource: "@DiginUserBundle/Controller/IdentiteController.php"
   type: annotation
