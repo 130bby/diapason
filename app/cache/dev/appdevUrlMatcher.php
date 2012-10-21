@@ -153,72 +153,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // identite
-        if (rtrim($pathinfo, '/') === '/user/identite') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'identite');
-            }
-
-            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::indexAction',  '_route' => 'identite',);
-        }
-
-        // identite_show
-        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::showAction',)), array('_route' => 'identite_show'));
-        }
-
-        // identite_new
-        if ($pathinfo === '/user/identite/new') {
-            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::newAction',  '_route' => 'identite_new',);
-        }
-
-        // identite_create
-        if ($pathinfo === '/user/identite/create') {
-            if ($this->context->getMethod() != 'POST') {
-                $allow[] = 'POST';
-                goto not_identite_create;
-            }
-
-            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::createAction',  '_route' => 'identite_create',);
-        }
-        not_identite_create:
-
-        // identite_edit
-        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::editAction',)), array('_route' => 'identite_edit'));
-        }
-
-        // identite_update
-        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
-            if ($this->context->getMethod() != 'POST') {
-                $allow[] = 'POST';
-                goto not_identite_update;
-            }
-
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::updateAction',)), array('_route' => 'identite_update'));
-        }
-        not_identite_update:
-
-        // identite_delete
-        if (0 === strpos($pathinfo, '/user/identite') && preg_match('#^/user/identite/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
-            if ($this->context->getMethod() != 'POST') {
-                $allow[] = 'POST';
-                goto not_identite_delete;
-            }
-
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::deleteAction',)), array('_route' => 'identite_delete'));
-        }
-        not_identite_delete:
-
-        // digin_home_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'digin_home_homepage');
-            }
-
-            return array (  '_controller' => 'Digin\\HomeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'digin_home_homepage',);
-        }
-
         // fos_user_security_login
         if ($pathinfo === '/login') {
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
@@ -264,7 +198,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
+                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
             }
 
             // fos_user_registration_check_email
@@ -274,7 +208,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     goto not_fos_user_registration_check_email;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
+                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
             }
             not_fos_user_registration_check_email:
 
@@ -285,7 +219,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     goto not_fos_user_registration_confirm;
                 }
 
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',)), array('_route' => 'fos_user_registration_confirm'));
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\RegistrationController::confirmAction',)), array('_route' => 'fos_user_registration_confirm'));
             }
             not_fos_user_registration_confirm:
 
@@ -296,7 +230,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     goto not_fos_user_registration_confirmed;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
+                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
             }
             not_fos_user_registration_confirmed:
 
@@ -359,6 +293,68 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
+
+        // identite
+        if (rtrim($pathinfo, '/') === '/identite') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'identite');
+            }
+
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::indexAction',  '_route' => 'identite',);
+        }
+
+        // identite_show
+        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::showAction',)), array('_route' => 'identite_show'));
+        }
+
+        // identite_new
+        if ($pathinfo === '/identite/new') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::newAction',  '_route' => 'identite_new',);
+        }
+
+        // identite_create
+        if ($pathinfo === '/identite/create') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_identite_create;
+            }
+
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::createAction',  '_route' => 'identite_create',);
+        }
+        not_identite_create:
+
+        // identite_edit
+        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::editAction',)), array('_route' => 'identite_edit'));
+        }
+
+        // identite_update
+        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_identite_update;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::updateAction',)), array('_route' => 'identite_update'));
+        }
+        not_identite_update:
+
+        // identite_delete
+        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_identite_delete;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::deleteAction',)), array('_route' => 'identite_delete'));
+        }
+        not_identite_delete:
+
+        // digin_home_homepage
+        if ($pathinfo === '/contact') {
+            return array (  '_controller' => 'Digin\\HomeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'digin_home_homepage',);
+        }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }

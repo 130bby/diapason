@@ -22,11 +22,10 @@ class Identite
     private $id;
 
 	/**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\OneToOne(targetEntity="User", inversedBy="identite")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
     private $user_id;
-	
 	
     /**
      * @var string $nom
@@ -73,7 +72,7 @@ class Identite
     /**
      * @var string $adresse2
      *
-     * @ORM\Column(name="adresse2", type="string", length=255)
+     * @ORM\Column(name="adresse2", type="string", length=255, nullable=true)
      */
     private $adresse2;
 

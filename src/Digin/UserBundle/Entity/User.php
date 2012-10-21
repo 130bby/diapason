@@ -3,6 +3,8 @@ namespace Digin\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Digin\UserBundle\Entity\Identite as Identite;
 
 /**
  * @ORM\Entity
@@ -17,6 +19,13 @@ class User extends BaseUser
      */
     protected $id;
 
+	/**
+     * @ORM\OneToOne(targetEntity="Identite", mappedBy="user_id",cascade={"persist"})
+     */
+    private $identite;
+	
+
+
     /**
      * Get id
      *
@@ -26,5 +35,16 @@ class User extends BaseUser
     {
         return $this->id;
     }
+	
+    public function getIdentite()
+    {
+        return $this->identite;
+    }
+
+    public function setIdentite(Identite $identite = null)
+    {
+		$this->identite = $identite;
+    }	
+	
 	
 }

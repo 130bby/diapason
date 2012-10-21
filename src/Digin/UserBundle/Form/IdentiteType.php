@@ -20,22 +20,21 @@ class IdentiteType extends AbstractType
             ->add('adresse2')
             ->add('ville')
             ->add('code_postal')
-            ->add('email')
             ->add('tel')
             ->add('portable')
-            ->add('user_id')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Digin\UserBundle\Entity\Identite'
+            'data_class' => 'Digin\UserBundle\Entity\Identite',
+			'cascade_validation' => true
         ));
     }
 
     public function getName()
     {
-        return 'digin_userbundle_identitetype';
+        return 'identite';
     }
 }

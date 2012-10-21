@@ -1,3 +1,6 @@
 digin_home_homepage:
     pattern:  /
     defaults: { _controller: DiginHomeBundle:Default:index }
+digin_home_homepage:
+    pattern:  /contact
+    defaults: { _controller: DiginHomeBundle:Default:index }
