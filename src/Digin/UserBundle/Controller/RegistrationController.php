@@ -36,9 +36,11 @@ class RegistrationController extends ContainerAware
 		$process = $formHandler->process($confirmationEnabled);
         if ($process) {
             $user = $form->getData();
-			// $user->getIdentite()->setUserId($user->getId());
-			// var_dump($user);
-			// die('sdf');
+			
+			//Ajout du user_id pour la table identite
+			$em = $this->container->get('doctrine')->getEntityManager();
+			$user->getIdentite()->setUserId($user);
+			$em->flush();
 
             $authUser = false;
             if ($confirmationEnabled) {

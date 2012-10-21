@@ -22,6 +22,8 @@ class Identite
     private $id;
 
 	/**
+     * @var integer $user_id
+     *
      * @ORM\OneToOne(targetEntity="User", inversedBy="identite")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
@@ -89,13 +91,6 @@ class Identite
      * @ORM\Column(name="code_postal", type="string", length=15)
      */
     private $code_postal;
-
-    /**
-     * @var string $email
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
 
     /**
      * @var string $tel
@@ -327,29 +322,6 @@ class Identite
     public function getCodePostal()
     {
         return $this->code_postal;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Identite
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**

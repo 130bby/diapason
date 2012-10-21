@@ -135,10 +135,10 @@ class __TwigTemplate_35c4a5dbb1d4b0c4fa2138266765444e extends Twig_Template
                 <nav id=\"primary\">
                     <ul class=\"menu\">
                         <li><a href=\"app_dev.php\" id=\"bt_accueil\"></a></li>
-                        <li><a href=\"diapason\" id=\"bt_diapason\"></a></li>
+                        <li><a href=\"/diapason\" id=\"bt_diapason\"></a></li>
                         <li><a href=\"\" id=\"bt_jt\"></a></li>
                         <li><a href=\"\" id=\"bt_ent\"></a></li>
-                        <li><a href=\"contact\" id=\"bt_contact\"></a></li>
+                        <li><a href=\"/contact\" id=\"bt_contact\"></a></li>
                         <li><a href=\"\" id=\"bt_fcbk\" target=\"_blank\"></a></li>
                 </nav>
 

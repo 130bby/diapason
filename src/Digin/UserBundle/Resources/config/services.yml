@@ -5,3 +5,8 @@ services:
 #    digin_user.example:
 #        class: %digin_user.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+services:
+   digin_user_registration:
+      class: Digin\UserBundle\Form\UserType
+      tags:
+         -  { name: form.type }

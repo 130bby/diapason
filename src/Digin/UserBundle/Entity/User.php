@@ -20,7 +20,7 @@ class User extends BaseUser
     protected $id;
 
 	/**
-     * @ORM\OneToOne(targetEntity="Identite", mappedBy="user_id",cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Identite", mappedBy="user_id", cascade={"persist"})
      */
     private $identite;
 	
