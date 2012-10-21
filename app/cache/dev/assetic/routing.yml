@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /Applications/XAMPP/xamppfiles/htdocs/diapason/app/config/routing_dev.yml
+    resource: 'E:/websites/diapason/app/config/routing_dev.yml'

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -18,11 +17,6 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-=======
-digin_user_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: DiginUserBundle:Default:index }
->>>>>>> 8ff796faa80f69ac6ba1c2063c70b7896653f5c3
 identite:
   resource: "@DiginUserBundle/Controller/IdentiteController.php"
   type: annotation

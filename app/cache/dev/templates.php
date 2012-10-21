@@ -102,6 +102,8 @@
   'FOSUserBundle:Resetting:reset.html.twig' => 'E:\\websites\\diapason\\vendor\\bundles\\FOS\\UserBundle/Resources/views/Resetting/reset.html.twig',
   'FOSUserBundle:Resetting:reset_content.html.twig' => 'E:\\websites\\diapason\\vendor\\bundles\\FOS\\UserBundle/Resources/views/Resetting/reset_content.html.twig',
   'FOSUserBundle:Security:login.html.twig' => 'E:\\websites\\diapason\\src\\Digin\\UserBundle/Resources/views/Security/login.html.twig',
+  'DiginHomeBundle:Default:contact.html.twig' => 'E:\\websites\\diapason\\src\\Digin\\HomeBundle/Resources/views/Default/contact.html.twig',
+  'DiginHomeBundle:Default:diapason.html.twig' => 'E:\\websites\\diapason\\src\\Digin\\HomeBundle/Resources/views/Default/diapason.html.twig',
   'DiginHomeBundle:Default:index.html.twig' => 'E:\\websites\\diapason\\src\\Digin\\HomeBundle/Resources/views/Default/index.html.twig',
   'DiginUserBundle:Atouts:edit.html.twig' => 'E:\\websites\\diapason\\src\\Digin\\UserBundle/Resources/views/Atouts/edit.html.twig',
   'DiginUserBundle:Atouts:index.html.twig' => 'E:\\websites\\diapason\\src\\Digin\\UserBundle/Resources/views/Atouts/index.html.twig',

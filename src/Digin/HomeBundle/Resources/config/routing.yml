@@ -1,12 +1,6 @@
 digin_home_homepage:
     pattern:  /
     defaults: { _controller: DiginHomeBundle:Default:index }
-<<<<<<< HEAD
-digin_home_homepage:
-    pattern:  /contact
-    defaults: { _controller: DiginHomeBundle:Default:index }
-=======
-
 digin_home_diapason:   
     pattern:  /diapason
     defaults: { _controller: DiginHomeBundle:Default:diapason}
@@ -14,4 +8,3 @@ digin_home_diapason:
 digin_home_contact:    
     pattern:  /contact
     defaults: { _controller: DiginHomeBundle:Default:contact }
->>>>>>> 8ff796faa80f69ac6ba1c2063c70b7896653f5c3
