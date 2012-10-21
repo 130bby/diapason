@@ -6,9 +6,9 @@ parameters:
     database_user: root
     database_password: null
     mailer_transport: smtp
-    mailer_host: mail.3ad.digin.fr
-    mailer_user: contact@3ad.digin.fr
-    mailer_password: 123dev
-    locale: fr
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: en
     secret: 1e74edfe52a1014e00b11704e95099a33734d8b6
     database_path: null

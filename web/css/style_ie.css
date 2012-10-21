@@ -1,0 +1,16 @@
+*{outline:none;
+	behavior: url(css/PIE.php);
+	}
+a:hover{text-decoration:none; border:none; }
+
+#logo a{
+	color:#FFF;
+	position: absolute;
+	top: 8px;
+	left: 220px;
+	width: 300px;
+	height: 144px;
+	font: normal 105px "LeagueGothicRegular", Tahoma, Arial, sans-serif;
+	text-shadow: -1px -1px 1px #333;
+	
+}

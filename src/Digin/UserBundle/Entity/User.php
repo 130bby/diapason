@@ -35,6 +35,7 @@ class User extends BaseUser
     {
         return $this->id;
     }
+<<<<<<< HEAD
 	
     public function getIdentite()
     {
@@ -47,4 +48,6 @@ class User extends BaseUser
     }	
 	
 	
+=======
+>>>>>>> 8ff796faa80f69ac6ba1c2063c70b7896653f5c3
 }

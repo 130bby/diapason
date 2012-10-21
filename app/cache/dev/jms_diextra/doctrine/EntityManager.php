@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace EM5082a1e993e87_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM;
+=======
+namespace EM5082d81e0550b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM;
+>>>>>>> 8ff796faa80f69ac6ba1c2063c70b7896653f5c3
 
 /**
  * CG library enhanced proxy class.

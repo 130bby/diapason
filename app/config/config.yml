@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    translator:      { fallback: %locale% }
+    #translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -70,7 +70,7 @@ fos_user:
             enabled:    true # change to true for required email confirmation
             template:   FOSUserBundle:Registration:email.txt.twig
         form:
-            type:               digin_user_registration
+            type:               fos_user_registration
             handler:            fos_user.registration.form.handler.default
             name:               fos_user_registration_form
             validation_groups:  [Registration]

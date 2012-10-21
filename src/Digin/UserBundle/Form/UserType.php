@@ -11,6 +11,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+<<<<<<< HEAD
             ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
@@ -20,6 +21,25 @@ class UserType extends AbstractType
             ))
         ;
 		$builder->add('identite', new IdentiteType());
+=======
+            ->add('username')
+            ->add('usernameCanonical')
+            ->add('email')
+            ->add('emailCanonical')
+            ->add('enabled')
+            ->add('salt')
+            ->add('password')
+            ->add('lastLogin')
+            ->add('locked')
+            ->add('expired')
+            ->add('expiresAt')
+            ->add('confirmationToken')
+            ->add('passwordRequestedAt')
+            ->add('roles')
+            ->add('credentialsExpired')
+            ->add('credentialsExpireAt')
+        ;
+>>>>>>> 8ff796faa80f69ac6ba1c2063c70b7896653f5c3
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -32,6 +52,6 @@ class UserType extends AbstractType
 
     public function getName()
     {
-        return 'digin_user_registration';
+        return 'digin_userbundle_usertype';
     }
 }
