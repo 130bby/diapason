@@ -14,7 +14,7 @@ class IdentiteType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('sexe')
-            ->add('date_naissance')
+            ->add('date_naissance','birthday', array('years' => range(1921, 2012)))
             ->add('nationalite')
             ->add('adresse1')
             ->add('adresse2')
