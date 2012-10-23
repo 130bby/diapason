@@ -25,55 +25,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         $allow = array();
         $pathinfo = rawurldecode($pathinfo);
 
-        // _demo_login
-        if ($pathinfo === '/demo/secured/login') {
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::loginAction',  '_route' => '_demo_login',);
-        }
-
-        // _security_check
-        if ($pathinfo === '/demo/secured/login_check') {
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::securityCheckAction',  '_route' => '_security_check',);
-        }
-
-        // _demo_logout
-        if ($pathinfo === '/demo/secured/logout') {
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::logoutAction',  '_route' => '_demo_logout',);
-        }
-
-        // acme_demo_secured_hello
-        if ($pathinfo === '/demo/secured/hello') {
-            return array (  'name' => 'World',  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::helloAction',  '_route' => 'acme_demo_secured_hello',);
-        }
-
-        // _demo_secured_hello
-        if (0 === strpos($pathinfo, '/demo/secured/hello') && preg_match('#^/demo/secured/hello/(?<name>[^/]+)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::helloAction',)), array('_route' => '_demo_secured_hello'));
-        }
-
-        // _demo_secured_hello_admin
-        if (0 === strpos($pathinfo, '/demo/secured/hello/admin') && preg_match('#^/demo/secured/hello/admin/(?<name>[^/]+)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\DemoBundle\\Controller\\SecuredController::helloadminAction',)), array('_route' => '_demo_secured_hello_admin'));
-        }
-
-        // _demo
-        if (rtrim($pathinfo, '/') === '/demo') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', '_demo');
-            }
-
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::indexAction',  '_route' => '_demo',);
-        }
-
-        // _demo_hello
-        if (0 === strpos($pathinfo, '/demo/hello') && preg_match('#^/demo/hello/(?<name>[^/]+)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::helloAction',)), array('_route' => '_demo_hello'));
-        }
-
-        // _demo_contact
-        if ($pathinfo === '/demo/contact') {
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::contactAction',  '_route' => '_demo_contact',);
-        }
-
         // _wdt
         if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',)), array('_route' => '_wdt'));
@@ -153,19 +104,36 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/admin')) {
+            // admin_home
+            if (rtrim($pathinfo, '/') === '/admin') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'admin_home');
+                }
+
+                return array (  '_controller' => 'Digin\\AdminBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_home',);
+            }
+
+            // admin_confirm_users
+            if ($pathinfo === '/admin/confirm') {
+                return array (  '_controller' => 'Digin\\AdminBundle\\Controller\\DefaultController::confirmAction',  '_route' => 'admin_confirm_users',);
+            }
+
+        }
+
         // fos_user_security_login
         if ($pathinfo === '/login') {
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
         }
 
         // fos_user_security_check
         if ($pathinfo === '/login_check') {
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
         }
 
         // fos_user_security_logout
         if ($pathinfo === '/logout') {
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
         }
 
         if (0 === strpos($pathinfo, '/profile')) {
@@ -180,13 +148,13 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
+                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
             }
             not_fos_user_profile_show:
 
             // fos_user_profile_edit
             if ($pathinfo === '/profile/edit') {
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
+                return array (  '_controller' => 'Digin\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
             }
 
         }

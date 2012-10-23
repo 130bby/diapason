@@ -22,7 +22,7 @@
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="DiginHomeBundle">Digin\HomeBundle\DiginHomeBundle</parameter>
       <parameter key="DiginUserBundle">Digin\UserBundle\DiginUserBundle</parameter>
-      <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
+      <parameter key="DiginAdminBundle">Digin\AdminBundle\DiginAdminBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -260,11 +260,15 @@
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
-      <parameter key="ROLE_ADMIN" type="collection">
+      <parameter key="CONFIRMED_USER" type="collection">
         <parameter>ROLE_USER</parameter>
       </parameter>
-      <parameter key="ROLE_SUPER_ADMIN" type="collection">
-        <parameter>ROLE_ADMIN</parameter>
+      <parameter key="ROLE_CFA" type="collection">
+        <parameter>CONFIRMED_USER</parameter>
+      </parameter>
+      <parameter key="ROLE_3AD" type="collection">
+        <parameter>ROLE_CFA</parameter>
+        <parameter>ROLE_ALLOWED_TO_SWITCH</parameter>
       </parameter>
     </parameter>
     <parameter key="twig.class">Twig_Environment</parameter>
@@ -462,7 +466,7 @@
     <parameter key="jms_di_extra.cache_dir">E:/websites/diapason/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
     <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">E:/websites/diapason/app/cache/dev/jms_diextra/doctrine/EntityManager.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EM508483fa5d65a_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EM5086029a90340_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -694,14 +698,6 @@
         <argument type="collection">
           <argument>fos_user.security.interactive_login_listener</argument>
           <argument>onSecurityInteractiveLogin</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListenerService">
-        <argument>kernel.controller</argument>
-        <argument type="collection">
-          <argument>acme.demo.listener</argument>
-          <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -1607,6 +1603,12 @@
         <argument>validators</argument>
       </call>
       <call method="addResource">
+        <argument>yml</argument>
+        <argument>E:\websites\diapason\src\Digin\HomeBundle/Resources/translations\FOSUserBundle.fr.yml</argument>
+        <argument>fr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
         <argument>xlf</argument>
         <argument>E:\websites\diapason\src\Digin\HomeBundle/Resources/translations\messages.fr.xlf</argument>
         <argument>fr</argument>
@@ -1621,6 +1623,12 @@
       <call method="addResource">
         <argument>xlf</argument>
         <argument>E:\websites\diapason\src\Digin\UserBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>E:\websites\diapason\src\Digin\AdminBundle/Resources/translations\messages.fr.xlf</argument>
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
@@ -2338,7 +2346,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>508483fa05b06</argument>
+            <argument>5086029a127d2</argument>
           </service>
         </argument>
       </argument>
@@ -2393,11 +2401,15 @@
     </service>
     <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy">
       <argument type="collection">
-        <argument key="ROLE_ADMIN" type="collection">
+        <argument key="CONFIRMED_USER" type="collection">
           <argument>ROLE_USER</argument>
         </argument>
-        <argument key="ROLE_SUPER_ADMIN" type="collection">
-          <argument>ROLE_ADMIN</argument>
+        <argument key="ROLE_CFA" type="collection">
+          <argument>CONFIRMED_USER</argument>
+        </argument>
+        <argument key="ROLE_3AD" type="collection">
+          <argument>ROLE_CFA</argument>
+          <argument>ROLE_ALLOWED_TO_SWITCH</argument>
         </argument>
       </argument>
     </service>
@@ -2488,7 +2500,7 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>CFA</argument>
+                    <argument>ROLE_CFA</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2613,7 +2625,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>508483fa05b06</argument>
+            <argument>5086029a127d2</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2664,7 +2676,7 @@
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>CFA</argument>
+                    <argument>ROLE_CFA</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2825,9 +2837,6 @@
             <argument type="service" id="security.context"/>
           </service>
         </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service" id="twig.extension.acme.demo"/>
       </call>
     </service>
     <service id="twig.loader" class="Symfony\Bundle\TwigBundle\Loader\FilesystemLoader">
@@ -3027,7 +3036,7 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EM508483fa5d65a_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+    <service id="doctrine.orm.default_entity_manager" class="EM5086029a90340_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
       <file>E:/websites/diapason/app/cache/dev/jms_diextra/doctrine/EntityManager.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
@@ -3351,14 +3360,6 @@
     </service>
     <service id="digin_user_registration" class="Digin\UserBundle\Form\UserType">
       <tag name="form.type"/>
-    </service>
-    <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
-      <tag name="twig.extension"/>
-      <argument type="service" id="twig.loader"/>
-    </service>
-    <service id="acme.demo.listener" class="Acme\DemoBundle\EventListener\ControllerListener">
-      <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
-      <argument type="service" id="twig.extension.acme.demo"/>
     </service>
     <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener">
       <tag name="kernel.event_subscriber"/>

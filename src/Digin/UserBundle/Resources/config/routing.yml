@@ -20,4 +20,3 @@ fos_user_change_password:
 identite:
   resource: "@DiginUserBundle/Controller/IdentiteController.php"
   type: annotation
-
