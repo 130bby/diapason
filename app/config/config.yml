@@ -74,3 +74,8 @@ fos_user:
             handler:            fos_user.registration.form.handler.default
             name:               fos_user_registration_form
             validation_groups:  [Registration]
+services:
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }

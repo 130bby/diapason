@@ -1,0 +1,40 @@
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+<h1>Connectez-vous ici </h1>
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+    <input type="password" id="password" name="_password" required="required" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>
+<br><br><br>
+<h2>Vous n'êtes pas encore inscrit ? enregistrez vous ci-dessous</h2>
+
+<div class="login_register">
+
+
+	<a href="/register" class="bt_espace_jt">
+		<img src="/images/bt_espace_jt.png" alt="Espace Jeunes Travailleurs" />
+		<img class="hover" src="/images/bt_espace_jt_hov.png" alt="Espace Jeunes Travailleurs" />
+	</a>
+
+	<a href="/register" class="bt_espace_ent">
+		<img src="/images/bt_espace_ent.png" alt="Espace Entreprises" />
+		<img class="hover" src="/images/bt_espace_ent_hov.png" alt="Espace Entreprises" />
+	</a>
+</div>
+{% endblock fos_user_content %}

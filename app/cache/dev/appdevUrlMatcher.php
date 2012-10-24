@@ -115,8 +115,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_confirm_users
-            if ($pathinfo === '/admin/confirm') {
-                return array (  '_controller' => 'Digin\\AdminBundle\\Controller\\DefaultController::confirmAction',  '_route' => 'admin_confirm_users',);
+            if (0 === strpos($pathinfo, '/admin/confirm') && preg_match('#^/admin/confirm(?:/(?<email>[^/]+))?$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\AdminBundle\\Controller\\DefaultController::confirmAction',  'email' => NULL,)), array('_route' => 'admin_confirm_users'));
             }
 
         }

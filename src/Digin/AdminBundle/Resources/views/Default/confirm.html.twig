@@ -1,0 +1,18 @@
+les utilisateurs a confirmer sont :
+
+{% for user in users %}
+	<ul class="a_definir">
+		<li>{{ user.email }}</li>
+		<li>Nom : {{ user.identite.nom }}</li>
+		<li>Prenom : {{ user.identite.prenom }}</li>
+		<li>Prenom : {{ user.identite.sexe }}</li>
+		<li>Date de naissance : {{ user.identite.dateNaissance|localizeddate('full', 'none') }}</li>
+		<li>Nationalité : {{ user.identite.nationalite }}</li>
+		<li>Adresse : {{ user.identite.adresse1 }} {{ user.identite.adresse2 }}</li>
+		<li>Ville : {{ user.identite.ville }}</li>
+		<li>Code Postal : {{ user.identite.codePostal }}</li>
+		<li>Téléphone : {{ user.identite.tel }}</li>
+		<li>Portable : {{ user.identite.portable }}</li>
+		<li><a href="{{ path('admin_confirm_users', {'email': user.email}) }}">confirmer</a></li>
+	</ul>
+{% endfor %}

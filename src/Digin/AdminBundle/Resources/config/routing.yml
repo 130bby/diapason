@@ -1,0 +1,7 @@
+admin_home:
+    pattern:  /
+    defaults: { _controller: DiginAdminBundle:Default:index }
+admin_confirm_users:   
+    pattern:  /confirm/{email}
+    defaults: { _controller: DiginAdminBundle:Default:confirm, email:null}
+
