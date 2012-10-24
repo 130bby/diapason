@@ -27,12 +27,13 @@ class DefaultController extends Controller
 		$all_users = $this->getDoctrine()->getEntityManager()->getRepository('DiginUserBundle:User')->findAll();
 		$users = array();
 		foreach($all_users as $user){
-			foreach($user->getRoles() as $role){
-				if($role == "CONFIRMED_USER" || $role == "ROLE_CFA" || $role == "ROLE_3AD"){
-					continue(2);
+			if ($user->isEnabled())
+				foreach($user->getRoles() as $role){
+					if($role == "CONFIRMED_USER" || $role == "ROLE_CFA" || $role == "ROLE_3AD"){
+						continue(2);
+					}
+					$users[] = $user;
 				}
-				$users[] = $user;
-			}
         }
 		return $this->container->get('templating')->renderResponse('DiginAdminBundle:Default:confirm.html.'.$this->container->getParameter('fos_user.template.engine'), array('users' => $users));
 		

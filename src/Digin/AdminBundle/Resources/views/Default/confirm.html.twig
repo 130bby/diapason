@@ -1,5 +1,5 @@
+{% if users %}
 les utilisateurs a confirmer sont :
-
 {% for user in users %}
 	<ul class="a_definir">
 		<li>{{ user.email }}</li>
@@ -16,3 +16,6 @@ les utilisateurs a confirmer sont :
 		<li><a href="{{ path('admin_confirm_users', {'email': user.email}) }}">confirmer</a></li>
 	</ul>
 {% endfor %}
+{% else %}
+Pas d utilisateur a confirmer
+{% endif %}
