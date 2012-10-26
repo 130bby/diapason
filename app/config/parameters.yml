@@ -7,8 +7,8 @@ parameters:
     database_password: null
     mailer_transport: gmail
     mailer_host: smtp.gmail.com
-    mailer_user: pa.mettere
-    mailer_password: vatefaire
+    mailer_user: xxx
+    mailer_password: xxx
     locale: fr
     secret: 1e74edfe52a1014e00b11704e95099a33734d8b6
     database_path: null

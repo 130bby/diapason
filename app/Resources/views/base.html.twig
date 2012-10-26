@@ -56,11 +56,8 @@
                     <ul class="menu">
                         <li><a href="/" id="bt_accueil"></a></li>
                         <li><a href="/diapason" id="bt_diapason"></a></li>
-                        <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <a href="" id="bt_jt"></a>
-                            {% else %}
-                                <a href="/login" id="bt_jt"></a>
-                            {% endif %} 
+                        <li>
+                                <a href="/profil" id="bt_jt"></a>
                         </li>
                         <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <a href="" id="bt_ent"></a>
