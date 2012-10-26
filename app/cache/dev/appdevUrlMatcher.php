@@ -262,25 +262,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_fos_user_change_password:
 
-        // identite
-        if (rtrim($pathinfo, '/') === '/identite') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'identite');
-            }
-
-            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::indexAction',  '_route' => 'identite',);
-        }
-
-        // identite_show
-        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::showAction',)), array('_route' => 'identite_show'));
-        }
-
-        // identite_new
-        if ($pathinfo === '/identite/new') {
-            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::newAction',  '_route' => 'identite_new',);
-        }
-
         // identite_create
         if ($pathinfo === '/identite/create') {
             if ($this->context->getMethod() != 'POST') {
@@ -293,8 +274,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         not_identite_create:
 
         // identite_edit
-        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::editAction',)), array('_route' => 'identite_edit'));
+        if ($pathinfo === '/identite/edit') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::editAction',  '_route' => 'identite_edit',);
         }
 
         // identite_update
@@ -308,16 +289,91 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_identite_update:
 
-        // identite_delete
-        if (0 === strpos($pathinfo, '/identite') && preg_match('#^/identite/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+        // experience_create
+        if ($pathinfo === '/experience/create') {
             if ($this->context->getMethod() != 'POST') {
                 $allow[] = 'POST';
-                goto not_identite_delete;
+                goto not_experience_create;
             }
 
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\IdentiteController::deleteAction',)), array('_route' => 'identite_delete'));
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\ExperienceController::createAction',  '_route' => 'experience_create',);
         }
-        not_identite_delete:
+        not_experience_create:
+
+        // experience_edit
+        if ($pathinfo === '/experience/edit') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\ExperienceController::editAction',  '_route' => 'experience_edit',);
+        }
+
+        // experience_update
+        if (0 === strpos($pathinfo, '/experience') && preg_match('#^/experience/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_experience_update;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\ExperienceController::updateAction',)), array('_route' => 'experience_update'));
+        }
+        not_experience_update:
+
+        // contextesocial_create
+        if ($pathinfo === '/contextesocial/create') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_contextesocial_create;
+            }
+
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\ContexteSocialController::createAction',  '_route' => 'contextesocial_create',);
+        }
+        not_contextesocial_create:
+
+        // contextesocial_edit
+        if ($pathinfo === '/contextesocial/edit') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\ContexteSocialController::editAction',  '_route' => 'contextesocial_edit',);
+        }
+
+        // contextesocial_update
+        if (0 === strpos($pathinfo, '/contextesocial') && preg_match('#^/contextesocial/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_contextesocial_update;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\ContexteSocialController::updateAction',)), array('_route' => 'contextesocial_update'));
+        }
+        not_contextesocial_update:
+
+        // formation_create
+        if ($pathinfo === '/formation/create') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_formation_create;
+            }
+
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\FormationController::createAction',  '_route' => 'formation_create',);
+        }
+        not_formation_create:
+
+        // formation_edit
+        if ($pathinfo === '/formation/edit') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\FormationController::editAction',  '_route' => 'formation_edit',);
+        }
+
+        // formation_update
+        if (0 === strpos($pathinfo, '/formation') && preg_match('#^/formation/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_formation_update;
+            }
+
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Digin\\UserBundle\\Controller\\FormationController::updateAction',)), array('_route' => 'formation_update'));
+        }
+        not_formation_update:
+
+        // profil
+        if ($pathinfo === '/profil') {
+            return array (  '_controller' => 'Digin\\UserBundle\\Controller\\MonProfilController::indexAction',  '_route' => 'profil',);
+        }
 
         // digin_home_homepage
         if (rtrim($pathinfo, '/') === '') {

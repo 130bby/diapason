@@ -16,7 +16,6 @@ class FormationType extends AbstractType
             ->add('desir_reorientation')
             ->add('secteur_reorientation')
             ->add('commentaire')
-            ->add('user_id')
         ;
     }
 

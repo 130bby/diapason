@@ -20,3 +20,19 @@ fos_user_change_password:
 identite:
   resource: "@DiginUserBundle/Controller/IdentiteController.php"
   type: annotation
+
+experience:
+  resource: "@DiginUserBundle/Controller/ExperienceController.php"
+  type: annotation
+
+contextesocial:
+  resource: "@DiginUserBundle/Controller/ContexteSocialController.php"
+  type: annotation
+
+formation:
+  resource: "@DiginUserBundle/Controller/FormationController.php"
+  type: annotation
+
+profil:   
+    pattern:  /profil
+    defaults: { _controller: DiginUserBundle:MonProfil:index}

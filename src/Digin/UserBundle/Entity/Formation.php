@@ -22,7 +22,9 @@ class Formation
     private $id;
 
 	/**
-     * @ORM\OneToOne(targetEntity="User")
+     * @var integer $user_id
+     *
+     * @ORM\OneToOne(targetEntity="User", inversedBy="formation")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
     private $user_id;
@@ -186,5 +188,27 @@ class Formation
     public function getCommentaire()
     {
         return $this->commentaire;
+    }
+    /**
+     * Set user_id
+     *
+     * @param Digin\UserBundle\Entity\User $userId
+     * @return Formation
+     */
+    public function setUserId(\Digin\UserBundle\Entity\User $userId = null)
+    {
+        $this->user_id = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get user_id
+     *
+     * @return Digin\UserBundle\Entity\User 
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
     }
 }

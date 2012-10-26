@@ -20,7 +20,6 @@ class IdentiteController extends Controller
     /**
      * Lists all Identite entities.
      *
-     * @Route("/", name="identite")
      * @Template()
      */
     public function indexAction()
@@ -37,12 +36,11 @@ class IdentiteController extends Controller
     /**
      * Finds and displays a Identite entity.
      *
-     * @Route("/{id}/show", name="identite_show")
      * @Template()
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('DiginUserBundle:Identite')->find($id);
 
@@ -61,7 +59,6 @@ class IdentiteController extends Controller
     /**
      * Displays a form to create a new Identite entity.
      *
-     * @Route("/new", name="identite_new")
      * @Template()
      */
     public function newAction()
@@ -105,12 +102,14 @@ class IdentiteController extends Controller
     /**
      * Displays a form to edit an existing Identite entity.
      *
-     * @Route("/{id}/edit", name="identite_edit")
+     * @Route("/edit", name="identite_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $id = $user = $this->container->get('security.context')->getToken()->getUser()->getIdentite()->getId();
+
+		$em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('DiginUserBundle:Identite')->find($id);
 
@@ -153,7 +152,7 @@ class IdentiteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('identite_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('profil'));
         }
 
         return array(
@@ -166,7 +165,6 @@ class IdentiteController extends Controller
     /**
      * Deletes a Identite entity.
      *
-     * @Route("/{id}/delete", name="identite_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)

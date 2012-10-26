@@ -5,6 +5,7 @@ namespace Digin\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Digin\UserBundle\Mailer\TwigSwiftMailer as TwigSwiftMailer;
 
 class DefaultController extends Controller
 {
@@ -17,15 +18,18 @@ class DefaultController extends Controller
     {
 		if (!is_null($email))
 		{
-			$userManager = $this->container->get('fos_user.user_manager');
-			$tbc_user = $userManager->findUserByEmail($email);
-			// $tbc_user = $this->getDoctrine()->getEntityManager()->getRepository('DiginUserBundle:User')->findBy(array('id' => $id));
+			// On ajoute le role "CONFIRMED_USER" a l utilisateur
+			$tbc_user = $this->container->get('fos_user.user_manager')->findUserByEmail($email);
 			$tbc_user->addRole('CONFIRMED_USER');
 			$this->getDoctrine()->getEntityManager()->persist( $tbc_user );
 			$this->getDoctrine()->getEntityManager()->flush();
+            $mailer = new TwigSwiftMailer();
+			$mailer->sendConfirmationCFAMessage($tbc_user);
 		}
-		$all_users = $this->getDoctrine()->getEntityManager()->getRepository('DiginUserBundle:User')->findAll();
+
+		//recuperation de la liste des utilisateurs a confirmer
 		$users = array();
+		$all_users = $this->getDoctrine()->getEntityManager()->getRepository('DiginUserBundle:User')->findAll();
 		foreach($all_users as $user){
 			if ($user->isEnabled())
 				foreach($user->getRoles() as $role){

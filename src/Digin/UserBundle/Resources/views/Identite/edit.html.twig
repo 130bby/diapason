@@ -7,16 +7,3 @@
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('identite') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('identite_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>

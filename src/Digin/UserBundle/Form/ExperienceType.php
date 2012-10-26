@@ -22,7 +22,6 @@ class ExperienceType extends AbstractType
             ->add('description')
             ->add('souhaits')
             ->add('description2')
-            ->add('user_id')
         ;
     }
 

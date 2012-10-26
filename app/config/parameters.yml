@@ -5,10 +5,10 @@ parameters:
     database_name: diapason
     database_user: root
     database_password: null
-    mailer_transport: smtp
-    mailer_host: localhost
-    mailer_user: null
-    mailer_password: null
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: pa.mettere
+    mailer_password: vatefaire
     locale: fr
     secret: 1e74edfe52a1014e00b11704e95099a33734d8b6
     database_path: null

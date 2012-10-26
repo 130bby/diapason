@@ -20,7 +20,6 @@ class FormationController extends Controller
     /**
      * Lists all Formation entities.
      *
-     * @Route("/", name="formation")
      * @Template()
      */
     public function indexAction()
@@ -37,7 +36,6 @@ class FormationController extends Controller
     /**
      * Finds and displays a Formation entity.
      *
-     * @Route("/{id}/show", name="formation_show")
      * @Template()
      */
     public function showAction($id)
@@ -61,7 +59,6 @@ class FormationController extends Controller
     /**
      * Displays a form to create a new Formation entity.
      *
-     * @Route("/new", name="formation_new")
      * @Template()
      */
     public function newAction()
@@ -105,11 +102,13 @@ class FormationController extends Controller
     /**
      * Displays a form to edit an existing Formation entity.
      *
-     * @Route("/{id}/edit", name="formation_edit")
+     * @Route("/edit", name="formation_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction()
     {
+        $id = $user = $this->container->get('security.context')->getToken()->getUser()->getFormation()->getId();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('DiginUserBundle:Formation')->find($id);
@@ -166,7 +165,6 @@ class FormationController extends Controller
     /**
      * Deletes a Formation entity.
      *
-     * @Route("/{id}/delete", name="formation_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)

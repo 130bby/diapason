@@ -47,11 +47,20 @@ registration:
     flash:
         user_created: L'utilisateur a été créé avec succès
     email:
-        subject: Bienvenue %username% !
+        subject: Bienvenue sur DIAPASON !
         message: |
             Bonjour %username% !
 
             Pour confirmer votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            L'équipe 3AD.
+    emailCFA:
+        subject: DIAPASON : Votre compte a été validé !
+        message: |
+            Bonjour %username% !
+
+            votre compte utilisateur a été validé par l'equipe, vous pouvez désormais vous rendre sur le site pour compléter votre fiche !
 
             Cordialement,
             L'équipe 3AD.

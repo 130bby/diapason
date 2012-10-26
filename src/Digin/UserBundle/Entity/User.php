@@ -24,6 +24,20 @@ class User extends BaseUser
      */
     private $identite;
 	
+	/**
+     * @ORM\OneToOne(targetEntity="Experience", mappedBy="user_id", cascade={"persist"})
+     */
+    private $experience;
+
+	/**
+     * @ORM\OneToOne(targetEntity="Formation", mappedBy="user_id", cascade={"persist"})
+     */
+    private $formation;
+
+	/**
+     * @ORM\OneToOne(targetEntity="ContexteSocial", mappedBy="user_id", cascade={"persist"})
+     */
+    private $contextesocial;
 
 
     /**
@@ -46,5 +60,33 @@ class User extends BaseUser
 		$this->identite = $identite;
     }	
 	
+    public function getExperience()
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(Experience $experience = null)
+    {
+		$this->experience = $experience;
+    }	
 	
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(Formation $formation = null)
+    {
+		$this->formation = $formation;
+    }	
+	
+    public function getContexteSocial()
+    {
+        return $this->contextesocial;
+    }
+
+    public function setContexteSocial(ContexteSocial $contextesocial = null)
+    {
+		$this->contextesocial = $contextesocial;
+    }	
 }

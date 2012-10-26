@@ -20,7 +20,6 @@ class ContexteSocialController extends Controller
     /**
      * Lists all ContexteSocial entities.
      *
-     * @Route("/", name="contextesocial")
      * @Template()
      */
     public function indexAction()
@@ -37,7 +36,6 @@ class ContexteSocialController extends Controller
     /**
      * Finds and displays a ContexteSocial entity.
      *
-     * @Route("/{id}/show", name="contextesocial_show")
      * @Template()
      */
     public function showAction($id)
@@ -61,7 +59,6 @@ class ContexteSocialController extends Controller
     /**
      * Displays a form to create a new ContexteSocial entity.
      *
-     * @Route("/new", name="contextesocial_new")
      * @Template()
      */
     public function newAction()
@@ -105,11 +102,13 @@ class ContexteSocialController extends Controller
     /**
      * Displays a form to edit an existing ContexteSocial entity.
      *
-     * @Route("/{id}/edit", name="contextesocial_edit")
+     * @Route("/edit", name="contextesocial_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction()
     {
+        $id = $user = $this->container->get('security.context')->getToken()->getUser()->getContexteSocial()->getId();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('DiginUserBundle:ContexteSocial')->find($id);
@@ -166,7 +165,6 @@ class ContexteSocialController extends Controller
     /**
      * Deletes a ContexteSocial entity.
      *
-     * @Route("/{id}/delete", name="contextesocial_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)

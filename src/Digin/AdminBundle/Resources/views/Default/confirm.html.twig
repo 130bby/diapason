@@ -1,21 +1,53 @@
-{% if users %}
-les utilisateurs a confirmer sont :
-{% for user in users %}
-	<ul class="a_definir">
-		<li>{{ user.email }}</li>
-		<li>Nom : {{ user.identite.nom }}</li>
-		<li>Prenom : {{ user.identite.prenom }}</li>
-		<li>Prenom : {{ user.identite.sexe }}</li>
-		<li>Date de naissance : {{ user.identite.dateNaissance|localizeddate('full', 'none') }}</li>
-		<li>Nationalité : {{ user.identite.nationalite }}</li>
-		<li>Adresse : {{ user.identite.adresse1 }} {{ user.identite.adresse2 }}</li>
-		<li>Ville : {{ user.identite.ville }}</li>
-		<li>Code Postal : {{ user.identite.codePostal }}</li>
-		<li>Téléphone : {{ user.identite.tel }}</li>
-		<li>Portable : {{ user.identite.portable }}</li>
-		<li><a href="{{ path('admin_confirm_users', {'email': user.email}) }}">confirmer</a></li>
-	</ul>
-{% endfor %}
-{% else %}
-Pas d utilisateur a confirmer
-{% endif %}
+{% extends '::admin.html.twig' %}
+
+{% block content %}
+
+
+<div id="body_page"> 
+
+	<div class="sidebar_page">
+		<ul>
+			<li><a class="active" href="{{ path('admin_confirm_users') }}"><span></span>Inscriptions à valider</a></li><br />
+			<li><a href=""><span></span>Qualifications à valider</a></li><br />
+			<li><a href=""><span></span>Dossiers Apprentis</a></li><br />
+			<li><a href=""><span></span>Offres d'emploi</a></li><br />
+			<li><a href=""><span></span>Utilisateurs</a></li><br />
+			<li><a href=""><span></span>Saisir une offre d'emploi</a></li><br />
+			<li><a href=""><span></span>Statistiques</a></li><br />
+		</ul>
+	</div>
+
+
+	<div class="mainpage_page">
+
+		<h1>Apprentis à confirmer</h1>
+		
+		{% if users %}
+		{% for user in users %}
+		<ul class="list_users_confirm">
+			<li>Nom : {{ user.identite.nom }} - Prenom : {{ user.identite.prenom }} - Date de naissance - {{ user.identite.dateNaissance|localizeddate('full', 'none') }} - <a href="mailto:{{ user.email }}">{{ user.email }}</a> : <span><a href="{{ path('admin_confirm_users', {'email': user.email}) }}">confirmer</a></span></li>
+			<!--
+			<li>Prenom : {{ user.identite.sexe }}</li>
+			<li>Date de naissance : {{ user.identite.dateNaissance|localizeddate('full', 'none') }}</li>
+			<li>Nationalité : {{ user.identite.nationalite }}</li>
+			<li>Adresse : {{ user.identite.adresse1 }} {{ user.identite.adresse2 }}</li>
+			<li>Ville : {{ user.identite.ville }}</li>
+			<li>Code Postal : {{ user.identite.codePostal }}</li>
+			<li>Téléphone : {{ user.identite.tel }}</li>
+			<li>Portable : {{ user.identite.portable }}</li>-->
+		</ul>
+		{% endfor %}
+		{% else %}
+			Pas d utilisateur a confirmer
+		{% endif %}
+
+	</div>
+
+
+		
+		
+	</div>
+
+</div>
+
+{% endblock %}

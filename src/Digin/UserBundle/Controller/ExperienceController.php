@@ -20,7 +20,6 @@ class ExperienceController extends Controller
     /**
      * Lists all Experience entities.
      *
-     * @Route("/", name="experience")
      * @Template()
      */
     public function indexAction()
@@ -37,7 +36,6 @@ class ExperienceController extends Controller
     /**
      * Finds and displays a Experience entity.
      *
-     * @Route("/{id}/show", name="experience_show")
      * @Template()
      */
     public function showAction($id)
@@ -61,7 +59,6 @@ class ExperienceController extends Controller
     /**
      * Displays a form to create a new Experience entity.
      *
-     * @Route("/new", name="experience_new")
      * @Template()
      */
     public function newAction()
@@ -85,6 +82,7 @@ class ExperienceController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Experience();
+        $entity->setUserId($this->container->get('security.context')->getToken()->getUser());
         $form = $this->createForm(new ExperienceType(), $entity);
         $form->bind($request);
 
@@ -105,11 +103,13 @@ class ExperienceController extends Controller
     /**
      * Displays a form to edit an existing Experience entity.
      *
-     * @Route("/{id}/edit", name="experience_edit")
+     * @Route("/edit", name="experience_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction()
     {
+        $id = $user = $this->container->get('security.context')->getToken()->getUser()->getExperience()->getId();
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('DiginUserBundle:Experience')->find($id);
@@ -166,7 +166,6 @@ class ExperienceController extends Controller
     /**
      * Deletes a Experience entity.
      *
-     * @Route("/{id}/delete", name="experience_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
